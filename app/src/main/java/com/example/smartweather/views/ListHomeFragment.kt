@@ -40,7 +40,7 @@ class ListHomeFragment : Fragment() {
                 listTest.add("")
 
                 adapter = WeatherAdapter(listTest) {
-
+                    homeViewModel.replaceFragment(requireContext(), WeatherDetalFragment.newInstance(), "WeatherDetalFragment")
                 }
             }
 
