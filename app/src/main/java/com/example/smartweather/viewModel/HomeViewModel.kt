@@ -16,12 +16,15 @@ class HomeViewModel : ViewModel() {
 
     var networkManager: MainService = MainService.Builder().build()
 
-    fun getWeather(onServiceResponse: () -> Unit) {
+    fun getArtistInfo(onServiceResponse: (isSuccess: Boolean) -> Unit) {
         viewModelScope.launch(Dispatchers.IO + getCoroutineExcHand()) {
-            val response = networkManager.getWeather(35.01, 129.01, "")
+            val response = networkManager.getArtistInfo("shakira")
 
-            onServiceResponse()
-
+            if (response.code() in 200..299) {
+                onServiceResponse(true)
+            } else {
+                onServiceResponse(false)
+            }
         }
     }
 

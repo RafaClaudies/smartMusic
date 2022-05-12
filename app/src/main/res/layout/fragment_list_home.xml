@@ -23,6 +23,21 @@
             android:textSize="40sp"
             android:textStyle="bold" />
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/str_artist_name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_query"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_home"
             android:layout_width="match_parent"

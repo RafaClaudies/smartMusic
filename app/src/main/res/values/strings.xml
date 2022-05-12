@@ -1,9 +1,8 @@
 <resources>
-    <string name="app_name">SmartWeather</string>
-    <string name="str_title_smw">SmartWeather</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="str_home">Home</string>
-    <string name="str_detail">Detail</string>
-    <string name="str_accept">Accept</string>
+    <string name="app_name">SmartMusic</string>
+    <string name="str_title_smw">SmartMusic</string>
+    <string name="str_home">Inicio</string>
+    <string name="str_detail">Detalle</string>
+    <string name="str_accept">Acceptar</string>
+    <string name="str_artist_name">Nombre del artista</string>
 </resources>

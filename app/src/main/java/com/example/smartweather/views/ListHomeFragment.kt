@@ -19,14 +19,17 @@ class ListHomeFragment : Fragment() {
     private val homeViewModel by activityViewModels<HomeViewModel>()
     private lateinit var bindingView: FragmentListHomeBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         bindingView = FragmentListHomeBinding.inflate(inflater, container, false)
 
         bindingView.apply {
+
+
+            /*
+            homeViewModel.getArtistInfo {
+                homeViewModel.replaceFragment(this@HomeActivity, ListHomeFragment.newInstance(), "")
+            }
+             */
 
             rvHome.apply {
 
