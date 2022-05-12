@@ -14,9 +14,7 @@ import com.example.smartweather.viewModel.HomeViewModel
 
 class SplashScreenFragment : Fragment() {
 
-    private val homeViewModel by activityViewModels<HomeViewModel>()
     private lateinit var bindingView: FragmentSplashScreenBinding
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         bindingView = FragmentSplashScreenBinding.inflate(inflater, container, false)

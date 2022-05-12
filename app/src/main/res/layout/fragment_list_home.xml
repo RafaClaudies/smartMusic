@@ -9,13 +9,28 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/bc_grey"
+        android:orientation="vertical"
         tools:context=".views.ListHomeFragment">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:text="@string/str_home"
+            android:textColor="@color/black"
+            android:textSize="40sp"
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:overScrollMode="never" />
+            android:layout_margin="16dp"
+            android:overScrollMode="never"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_weather" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>
