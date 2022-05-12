@@ -5,4 +5,5 @@
     <string name="str_detail">Detalle</string>
     <string name="str_accept">Acceptar</string>
     <string name="str_artist_name">Nombre del artista</string>
+    <string name="str_failed">No se encotraron resultados...</string>
 </resources>

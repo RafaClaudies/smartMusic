@@ -1,14 +1,16 @@
 package com.example.smartweather.views
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
+import android.view.View.OnTouchListener
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import android.view.inputmethod.EditorInfo
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.smartweather.R
 import com.example.smartweather.databinding.FragmentListHomeBinding
 import com.example.smartweather.viewModel.HomeViewModel
 import com.example.smartweather.views.adapter.WeatherAdapter
@@ -19,37 +21,59 @@ class ListHomeFragment : Fragment() {
     private val homeViewModel by activityViewModels<HomeViewModel>()
     private lateinit var bindingView: FragmentListHomeBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    @SuppressLint("ClickableViewAccessibility")
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         bindingView = FragmentListHomeBinding.inflate(inflater, container, false)
 
         bindingView.apply {
 
-
-            /*
-            homeViewModel.getArtistInfo {
-                homeViewModel.replaceFragment(this@HomeActivity, ListHomeFragment.newInstance(), "")
+            editQuery.setOnEditorActionListener { _, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    homeViewModel.getArtistInfo(editQuery.text.toString()) {
+                        onServiceResponse(it)
+                    }
+                    true
+                } else false
             }
-             */
 
-            rvHome.apply {
-
-                layoutManager = LinearLayoutManager(requireContext())
-
-                val listTest = arrayListOf<String>()
-                listTest.add("")
-                listTest.add("")
-                listTest.add("")
-                listTest.add("")
-                listTest.add("")
-
-                adapter = WeatherAdapter(listTest) {
-                    homeViewModel.replaceFragment(requireContext(), WeatherDetalFragment.newInstance(), "WeatherDetalFragment")
+            editQuery.setOnTouchListener(OnTouchListener { _, event ->
+                val DRAWABLE_RIGHT = 2
+                if (event.action == MotionEvent.ACTION_UP) {
+                    if (event.rawX >= editQuery.right - editQuery.compoundDrawables[DRAWABLE_RIGHT].bounds.width()) {
+                        homeViewModel.getArtistInfo(editQuery.text.toString()) {
+                            onServiceResponse(it)
+                        }
+                        return@OnTouchListener true
+                    }
                 }
-            }
+                false
+            })
+
+
+
 
         }
 
         return bindingView.root
+    }
+
+    private fun onServiceResponse(flag: Boolean) {
+        bindingView.apply {
+            if (flag) {
+                txtFailed.visibility = View.GONE
+                rvHome.apply {
+                    visibility = View.VISIBLE
+                    layoutManager = LinearLayoutManager(requireContext())
+                    adapter = WeatherAdapter(homeViewModel.infoArtist.data!!) {
+                        homeViewModel.songSelected = it
+                        homeViewModel.replaceFragment(requireContext(), WeatherDetalFragment.newInstance(), "WeatherDetalFragment")
+                    }
+                }
+            } else {
+                rvHome.visibility = View.GONE
+                txtFailed.visibility = View.VISIBLE
+            }
+        }
     }
 
     companion object {

@@ -18,7 +18,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/ic_weater"
+                android:id="@+id/ic_artist"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_margin="16dp"
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ic_weater"
+                app:layout_constraintStart_toEndOf="@id/ic_artist"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Dia 1" />
 
@@ -44,7 +44,7 @@
                 android:layout_margin="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ic_weater"
+                app:layout_constraintStart_toEndOf="@id/ic_artist"
                 app:layout_constraintTop_toBottomOf="@id/txv_title"
 
                 tools:text="Clima X" />

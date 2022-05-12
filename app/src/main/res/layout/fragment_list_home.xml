@@ -14,6 +14,7 @@
         tools:context=".views.ListHomeFragment">
 
         <TextView
+            android:id="@+id/txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -34,7 +35,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_query"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_search"
+                android:imeOptions="actionDone"
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -45,7 +49,22 @@
             android:layout_margin="16dp"
             android:overScrollMode="never"
             tools:itemCount="2"
-            tools:listitem="@layout/item_weather" />
+            tools:listitem="@layout/item_weather"
+            tools:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txt_failed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:padding="16dp"
+            android:text="@string/str_failed"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            android:textStyle="normal"
+            android:visibility="gone" />
+
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>
