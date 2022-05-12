@@ -20,6 +20,11 @@ class HomeActivity : AppCompatActivity() {
 
         bindingView.apply {
             lifecycleOwner = this@HomeActivity
+            homeViewModel.replaceFragment(this@HomeActivity, SplashScreenFragment.newInstance(), "")
+            homeViewModel.getWeather {
+                homeViewModel.replaceFragment(this@HomeActivity, ListHomeFragment.newInstance(), "")
+            }
+
         }
 
     }
