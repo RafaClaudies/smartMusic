@@ -12,4 +12,10 @@ interface MainService {
         @Query("appid") appId: String
     )
 
+    class Builder() : BaseServiceBuilder<MainService>() {
+        override fun build(): MainService {
+            return mBuilder.build().create(MainService::class.java)
+        }
+    }
+
 }
